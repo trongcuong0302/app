@@ -1,0 +1,16 @@
+<div class="timeStatistics">
+    <nz-space>
+        <nz-select *nzSpaceItem [ngModel]="mode" (ngModelChange)="onSelectChange($event)">
+            <nz-option nzValue="date" nzLabel="Date"></nz-option>
+            <nz-option nzValue="month" nzLabel="Month"></nz-option>
+            <nz-option nzValue="year" nzLabel="Year"></nz-option>
+        </nz-select>
+        <nz-date-picker *nzSpaceItem [nzMode]="mode" [(ngModel)]="date" (nzOnOpenChange)="onOpenChange($event)"></nz-date-picker>
+    </nz-space>
+
+    <nz-row>
+        <nz-col>
+            <nz-statistic [nzValue]="(1949101 | number)!" [nzTitle]="'Products added'"></nz-statistic>
+        </nz-col>
+    </nz-row>
+</div>

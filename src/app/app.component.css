@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    background-color: #3c3c3c;
+}
+
+.brand {
+    font-size: 20px;
+    margin: 0 10px;
+    color: #fff;
+}
+
+[nz-button] {
+    font-size: 20px;
+    margin-right: 10px;
+    border: none;
+}

@@ -1,0 +1,35 @@
+<div>
+    <h3 nz-typography>Products List</h3>
+
+    <nz-table #productTable *ngIf="products" [nzData]="products" nzShowSizeChanger [nzFrontPagination]="false" [nzLoading]="loading" [nzTotal]="total" [(nzPageSize)]="pageSize" [(nzPageIndex)]="pageIndex" (nzQueryParams)="onQueryParamsChange($event)">
+        <thead>
+            <tr>
+                <th>Product Code</th>
+                <th nzCustomFilter>Product Name
+                    <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                        <span nz-icon nzType="search"></span>
+                    </nz-filter-trigger>
+                </th>
+                <th nzColumnKey="price" [nzFilters]="filterPrice" [nzFilterFn]="true">Price</th>
+                <th nzColumnKey="categoryCode" [nzFilters]="filterCategoryCode" [nzFilterFn]="true">Category Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of productTable.data " (click)="setActiveProduct(product) ">
+                <td>{{product.productCode}}</td>
+                <td>{{product.productName}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.categoryCode}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+        <div class="ant-table-filter-dropdown">
+            <div class="search-box">
+                <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+                <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+                <button nz-button nzSize="small" (click)="reset()">Reset</button>
+            </div>
+        </div>
+    </nz-dropdown-menu>
+</div>
